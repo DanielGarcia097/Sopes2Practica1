@@ -1,0 +1,29 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Practica sopes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cpu-stat": "^2.0.1",
+    "cpu-stats": "^1.0.0",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "jade": "^1.11.0",
+    "node-ps": "0.0.2",
+    "os-usage": "0.0.3",
+    "os-utils": "0.0.14",
+    "path": "^0.12.7",
+    "pidusage": "^2.0.17",
+    "ps-node": "^0.1.6",
+    "socket.io": "^2.2.0",
+    "stylus": "^0.54.5",
+    "terminate": "^2.1.2",
+    "userid": "^0.3.1"
+  }
+}

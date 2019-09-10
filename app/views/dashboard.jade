@@ -1,0 +1,330 @@
+doctype html
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='au theme template')
+    meta(name='author', content='Hau Nguyen')
+    meta(name='keywords', content='au theme template')
+    // Title Page
+    title Dashboard
+    // Fontfaces CSS
+    link(href='css/font-face.css', rel='stylesheet', media='all')
+    link(href='vendor/font-awesome-4.7/css/font-awesome.min.css', rel='stylesheet', media='all')
+    link(href='vendor/font-awesome-5/css/fontawesome-all.min.css', rel='stylesheet', media='all')
+    link(href='vendor/mdi-font/css/material-design-iconic-font.min.css', rel='stylesheet', media='all')
+    // Bootstrap CSS
+    link(href='vendor/bootstrap-4.1/bootstrap.min.css', rel='stylesheet', media='all')
+    // Vendor CSS
+    link(href='vendor/animsition/animsition.min.css', rel='stylesheet', media='all')
+    link(href='vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css', rel='stylesheet', media='all')
+    link(href='vendor/wow/animate.css', rel='stylesheet', media='all')
+    link(href='vendor/css-hamburgers/hamburgers.min.css', rel='stylesheet', media='all')
+    link(href='vendor/slick/slick.css', rel='stylesheet', media='all')
+    link(href='vendor/select2/select2.min.css', rel='stylesheet', media='all')
+    link(href='vendor/perfect-scrollbar/perfect-scrollbar.css', rel='stylesheet', media='all')
+    // Main CSS
+    link(href='css/theme.css', rel='stylesheet', media='all')
+  body.animsition
+    .page-wrapper
+      // HEADER MOBILE
+      header.header-mobile.d-block.d-lg-none
+        .header-mobile__bar
+          .container-fluid
+            .header-mobile-inner
+              a.logo(href='index.html')
+                img(src='images/icon/logo.png', alt='CoolAdmin')
+              button.hamburger.hamburger--slider(type='button')
+                span.hamburger-box
+                  span.hamburger-inner
+        nav.navbar-mobile
+          .container-fluid
+            ul.navbar-mobile__list.list-unstyled
+              li.has-sub
+                a.js-arrow(href='#')
+                  i.fas.fa-tachometer-alt
+                  | Dashboard
+              li
+                a(href='/CPU')
+                  i.fas.fa-chart-bar
+                  | CPU INFORMACION
+              li
+                a(href='/MEM')
+                  i.fas.fa-table
+                  | MEMORIA INFORMACION
+      // END HEADER MOBILE
+      // MENU SIDEBAR
+      aside.menu-sidebar.d-none.d-lg-block
+        .logo
+          a(href='#')
+            img(src='images/icon/logo.png', alt='Cool Admin')
+        .menu-sidebar__content.js-scrollbar1
+          nav.navbar-sidebar
+            ul.list-unstyled.navbar__list
+              li.active.has-sub
+                a.js-arrow(href='/dashboard')
+                  i.fas.fa-tachometer-alt
+                  | Dashboard
+              li
+                a(href='/CPU')
+                  i.fas.fa-chart-bar
+                  | CPU INFORMACION
+              li
+                a(href='/MEM')
+                  i.fas.fa-table
+                  | MEMORIA INFORMACION
+      // END MENU SIDEBAR
+      // PAGE CONTAINER
+      .page-container
+        // HEADER DESKTOP
+        header.header-desktop
+          .section__content.section__content--p30
+            .container-fluid
+              .header-wrap
+                form.form-header(action='', method='POST')
+                  input.au-input.au-input--xl(type='text', name='search', placeholder='Search for datas & reports...')
+                  button.au-btn--submit(type='submit')
+                    i.zmdi.zmdi-search
+                .header-button
+                  .noti-wrap
+                    .noti__item.js-item-menu
+                      i.zmdi.zmdi-comment-more
+                      span.quantity 1
+                      .mess-dropdown.js-dropdown
+                        .mess__title
+                          p You have 2 news message
+                        .mess__item
+                          .image.img-cir.img-40
+                            img(src='images/icon/avatar-06.jpg', alt='Michelle Moreno')
+                          .content
+                            h6 Michelle Moreno
+                            p Have sent a photo
+                            span.time 3 min ago
+                        .mess__item
+                          .image.img-cir.img-40
+                            img(src='images/icon/avatar-04.jpg', alt='Diane Myers')
+                          .content
+                            h6 Diane Myers
+                            p You are now connected on message
+                            span.time Yesterday
+                        .mess__footer
+                          a(href='#') View all messages
+                    .noti__item.js-item-menu
+                      i.zmdi.zmdi-email
+                      span.quantity 1
+                      .email-dropdown.js-dropdown
+                        .email__title
+                          p You have 3 New Emails
+                        .email__item
+                          .image.img-cir.img-40
+                            img(src='images/icon/avatar-06.jpg', alt='Cynthia Harvey')
+                          .content
+                            p Meeting about new dashboard...
+                            span Cynthia Harvey, 3 min ago
+                        .email__item
+                          .image.img-cir.img-40
+                            img(src='images/icon/avatar-05.jpg', alt='Cynthia Harvey')
+                          .content
+                            p Meeting about new dashboard...
+                            span Cynthia Harvey, Yesterday
+                        .email__item
+                          .image.img-cir.img-40
+                            img(src='images/icon/avatar-04.jpg', alt='Cynthia Harvey')
+                          .content
+                            p Meeting about new dashboard...
+                            span Cynthia Harvey, April 12,,2018
+                        .email__footer
+                          a(href='#') See all emails
+                    .noti__item.js-item-menu
+                      i.zmdi.zmdi-notifications
+                      span.quantity 3
+                      .notifi-dropdown.js-dropdown
+                        .notifi__title
+                          p You have 3 Notifications
+                        .notifi__item
+                          .bg-c1.img-cir.img-40
+                            i.zmdi.zmdi-email-open
+                          .content
+                            p You got a email notification
+                            span.date April 12, 2018 06:50
+                        .notifi__item
+                          .bg-c2.img-cir.img-40
+                            i.zmdi.zmdi-account-box
+                          .content
+                            p Your account has been blocked
+                            span.date April 12, 2018 06:50
+                        .notifi__item
+                          .bg-c3.img-cir.img-40
+                            i.zmdi.zmdi-file-text
+                          .content
+                            p You got a new file
+                            span.date April 12, 2018 06:50
+                        .notifi__footer
+                          a(href='#') All notifications
+                  .account-wrap
+                    .account-item.clearfix.js-item-menu
+                      .image
+                        img(src='images/icon/avatar-01.jpg', alt='John Doe')
+                      .content
+                        a.js-acc-btn(href='#') john doe
+                      .account-dropdown.js-dropdown
+                        .info.clearfix
+                          .image
+                            a(href='#')
+                              img(src='images/icon/avatar-01.jpg', alt='John Doe')
+                          .content
+                            h5.name
+                              a(href='#') john doe
+                            span.email johndoe@example.com
+                        .account-dropdown__body
+                          .account-dropdown__item
+                            a(href='#')
+                              i.zmdi.zmdi-account
+                              | Account
+                          .account-dropdown__item
+                            a(href='#')
+                              i.zmdi.zmdi-settings
+                              | Setting
+                          .account-dropdown__item
+                            a(href='#')
+                              i.zmdi.zmdi-money-box
+                              | Billing
+                        .account-dropdown__footer
+                          a(href='#')
+                            i.zmdi.zmdi-power
+                            | Logout
+        // HEADER DESKTOP
+        // MAIN CONTENT
+        .main-content
+          .section__content.section__content--p30
+            .container-fluid
+              .row
+                .col-md-12
+                  .overview-wrap
+                    h2.title-1 Información de Procesos
+              div
+                .col-sm-6.col-lg-3
+                  .overview-item.overview-item--c1
+                    .overview__inner
+                      .overview-box.clearfix
+                        .icon
+                          i.zmdi.zmdi-account-o
+                        .text
+                          h2 Corriendo
+                          span #{data1[3]}
+                      .overview-chart
+                        canvas#widgetChart1
+                .col-sm-6.col-lg-3
+                  .overview-item.overview-item--c2
+                    .overview__inner
+                      .overview-box.clearfix
+                        .icon
+                          i.zmdi.zmdi-shopping-cart
+                        .text
+                          h2 Suspendidos
+                          span #{data1[0]}
+                      .overview-chart
+                        canvas#widgetChart2
+                .col-sm-6.col-lg-3
+                  .overview-item.overview-item--c3
+                    .overview__inner
+                      .overview-box.clearfix
+                        .icon
+                          i.zmdi.zmdi-calendar-note
+                        .text
+                          h2 Ociosos
+                          span #{data1[1]}
+                      .overview-chart
+                        canvas#widgetChart3
+                .col-sm-6.col-lg-3
+                  .overview-item.overview-item--c4
+                    .overview__inner
+                      .overview-box.clearfix
+                        .icon
+                          i.zmdi.zmdi-money
+                        .text
+                          h2 Zombie
+                          span #{data1[4]}
+                      .overview-chart
+                        canvas#widgetChart4
+                .col-sm-6.col-lg-3
+                  .overview-item.overview-item--c5
+                    .overview__inner
+                      .overview-box.clearfix
+                        .icon
+                          i.zmdi.zmdi-account-o
+                        .text
+                          h2 Detenidos
+                          span #{data1[2]}
+                      .overview-chart
+                        canvas#widgetChart1
+              .row
+                .col-md-12
+                  // DATA TABLE
+                  h3.title-5.m-b-35 data table
+                  form#form1(action='/inicio',method='POST')
+                    .table-responsive.table-responsive-data2
+                      table.table.table-data2
+                        thead
+                          tr
+                            th PID
+                            th Usuario
+                            th Nombre
+                            th %RAM
+                            th Estado
+                            th
+                        tbody
+                        - for (var i = 0; i <= data2.length -1; i++)
+                          tr.tr-shadow
+                            - var arreglo = data2[i];
+                            td #{arreglo[0]}
+                            td
+                              span.block-email #{arreglo[1]}
+                            td.desc #{arreglo[3]}
+                            td #{arreglo[4]}
+                            td
+                              - var state = arreglo[2]
+                              if state == "R"
+                                span.status--process #{arreglo[2]} Corriendo
+                              else if state == "S"
+                                span.status--sleeping #{arreglo[2]} Suspendido
+                              else if state == "Z"
+                                span.status--zombie #{arreglo[2]} Zombie
+                              else if state == "I"
+                                span.status--idlee #{arreglo[2]} Ocioso
+                              else if state == "T"
+                                span.status--denied #{arreglo[2]} Detenido
+                            td
+                              .table-data-feature
+                                button.item(name = 'processid',data-toggle='tooltip', data-placement='top', title='Delete', type='submit', form='form1', value=arreglo[0])
+                                  i.zmdi.zmdi-delete
+                  // END DATA TABLE
+              .row
+                .col-md-12
+                  .copyright
+                    p
+                      | Copyright © 2018 Colorlib. All rights reserved. Template by 
+                      a(href='https://colorlib.com') Colorlib
+                      | .
+        // END MAIN CONTENT
+        // END PAGE CONTAINER
+        // Jquery JS
+        script(src='vendor/jquery-3.2.1.min.js')
+        // Bootstrap JS
+        script(src='vendor/bootstrap-4.1/popper.min.js')
+        script(src='vendor/bootstrap-4.1/bootstrap.min.js')
+        // Vendor JS
+        script(src='vendor/slick/slick.min.js')
+        script(src='vendor/wow/wow.min.js')
+        script(src='vendor/animsition/animsition.min.js')
+        script(src='vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')
+        script(src='vendor/counter-up/jquery.waypoints.min.js')
+        script(src='vendor/counter-up/jquery.counterup.min.js')
+        script(src='vendor/circle-progress/circle-progress.min.js')
+        script(src='vendor/perfect-scrollbar/perfect-scrollbar.js')
+        script(src='vendor/chartjs/Chart.bundle.min.js')
+        script(src='vendor/select2/select2.min.js')
+        // Main JS
+        script(src='js/main.js')
+        // end document
