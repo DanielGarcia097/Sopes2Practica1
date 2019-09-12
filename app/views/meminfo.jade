@@ -69,6 +69,8 @@ html(lang='en')
                     //console.log(data.histograma);
                     inf = data
                     $("#use_mem").html(data.uso_mem+"%");
+                    $("#total_mem").html(data.total_ram);
+                    $("#utilizada_mem").html(data.utilizada);
                     histogram = data.histograma2;
                     console.log(histogram);
 
@@ -256,9 +258,13 @@ html(lang='en')
             .container-fluid
               .row
                 .col-lg-6
-                  .au-card.m-b-30(style='width: 1000px; height: 600px')
+                  .au-card.m-b-30(style='width: 1000px; height: 900px')
                     .au-card-inner
-                        h3.title-2.m-b-40%MEM Utilizada:
+                        h3.title-2.m-b-40 Memoria Total:
+                        h2.title-2.m-b-40 8052312
+                        h3.title-2.m-b-40 Memoria Utilizada: 
+                        h2.title-2.m-b-40#utilizada_mem
+                        h3.title-2.m-b-40 %MEM Utilizada:
                         h3.title-2.m-b-40#use_mem  
                         #chart_div(style='width: 900px; height: 450px')
          

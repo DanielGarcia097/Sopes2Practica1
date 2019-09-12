@@ -1,0 +1,1 @@
+cmd_/home/daniel/Documentos/SOPES2/Sopes2Practica1/Modulos/Hola1.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds  --build-id  -o /home/daniel/Documentos/SOPES2/Sopes2Practica1/Modulos/Hola1.ko /home/daniel/Documentos/SOPES2/Sopes2Practica1/Modulos/Hola1.o /home/daniel/Documentos/SOPES2/Sopes2Practica1/Modulos/Hola1.mod.o ;  true

@@ -285,16 +285,17 @@ html(lang='en')
                             td #{arreglo[4]}
                             td
                               - var state = arreglo[2]
-                              if state == "R"
+                              if state == "Runnable"
                                 span.status--process #{arreglo[2]} Corriendo
-                              else if state == "S"
-                                span.status--sleeping #{arreglo[2]} Suspendido
-                              else if state == "Z"
-                                span.status--zombie #{arreglo[2]} Zombie
-                              else if state == "I"
-                                span.status--idlee #{arreglo[2]} Ocioso
-                              else if state == "T"
+                              else if state == "Stopped"
                                 span.status--denied #{arreglo[2]} Detenido
+                              else if state == "Zombie"
+                                span.status--zombie #{arreglo[2]} Zombie
+                              else if state == "Idle"
+                                span.status--idlee #{arreglo[2]} Ocioso
+                              else if state == "Suspend"
+                                span.status--sleeping #{arreglo[2]} Suspendido
+                                
                             td
                               .table-data-feature
                                 button.item(name = 'processid',data-toggle='tooltip', data-placement='top', title='Delete', type='submit', form='form1', value=arreglo[0])
