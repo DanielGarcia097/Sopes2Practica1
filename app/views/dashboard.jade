@@ -285,15 +285,15 @@ html(lang='en')
                             td #{arreglo[4]}
                             td
                               - var state = arreglo[2]
-                              if state == "Runnable"
+                              if state == "R"
                                 span.status--process #{arreglo[2]} Corriendo
-                              else if state == "Stopped"
+                              else if state == "T"
                                 span.status--denied #{arreglo[2]} Detenido
-                              else if state == "Zombie"
+                              else if state == "Z"
                                 span.status--zombie #{arreglo[2]} Zombie
-                              else if state == "Idle"
+                              else if state == "I"
                                 span.status--idlee #{arreglo[2]} Ocioso
-                              else if state == "Suspend"
+                              else if state == "S"
                                 span.status--sleeping #{arreglo[2]} Suspendido
                                 
                             td

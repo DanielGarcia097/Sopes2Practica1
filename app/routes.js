@@ -78,73 +78,86 @@ killPocess = function (pid) {
 
 let files;
 getProcessData = function () {
-    procesos = fs.readFileSync("/proc/info_process").toString().split('\n');
-    
-    for (var i=3; i < procesos.length; i++) {
-        info_pocess = new Array()
-        var info_proceso = procesos[i].split(',');
-        var pid = info_proceso[0];
-        var pname = info_proceso[1];
-        var pstate = info_proceso[2];
+    files = fs.readdirSync(testFolder);
+    for (var file in files) {
+        if (!isNaN(files[file])) {
+            var pid = files[file];
+            dir_file = testFolder + files[file];
+            var data = fs.readFileSync(dir_file + "/status");
+            info_pocess = new Array();
+            /**
+             * Información extraída del archivo /status
+             * 2: Contiene el estado del proceso
+             * 8: Contiene el id del usuario que inicio el proceso
+             * 0: Contiene el nombre del proceso.
+             * */
+            var elems = data.toString().split('\n');
+            var estado = elems[2];
+            var user = elems[8];
+            var state = estado.split('	')[1].split(' ');
+            var id_user = user.split('	');
+            var name = elems[0].split('	');
+            //console.log("uid name is:", userid.username(parseInt(id_user[1])));
+            //console.log(id_user[1]);
+            //console.log("name process: " + name[1]);
+            //console.log("PID: " + pid);
 
-        /**
-         * Cantidad de procesos según su estado:
-         * S: Sleeping, I: Idlee, T: Stoped, R: Running, Z: Zombie
-         * Se almacenan los contadores en un array.
-         */
+            /**
+             * Cantidad de procesos según su estado:
+             * S: Sleeping, I: Idlee, T: Stoped, R: Running, Z: Zombie
+             * Se almacenan los contadores en un array.
+             */
 
-        if (pstate == "Stopped") {
-            detenido += 1;
-        } else if (pstate == "Idle") {
-            ocioso += 1;
-        } else if (pstate == "Suspend") {
-            suspendido += 1;
-        } else if (pstate == "Runnable") {
-            corriendo += 1;
-        } else if (pstate == "Zombie") {
-            zombie += 1;
+            if (state[0] == "S") {
+                suspendido += 1;
+            } else if (state[0] == "I") {
+                ocioso += 1;
+            } else if (state[0] == "T") {
+                detenido += 1;
+            } else if (state[0] == "R") {
+                corriendo += 1;
+            } else if (state[0] == "Z") {
+                zombie += 1;
+            }
+
+            //console.log("REPORTE");
+            //console.log("Suspendidos: " + suspendido);
+            //console.log("Ociosos: " + ocioso);
+            //console.log("Detenido: " + detenido);
+            //console.log("Corriendo: " + corriendo);
+
+            estados_cant[0] = suspendido;
+            estados_cant[1] = ocioso;
+            estados_cant[2] = detenido;
+            estados_cant[3] = corriendo;
+            estados_cant[4] = zombie;
+
+            info_pocess.push(pid);
+            info_pocess.push(userid.username(parseInt(id_user[1])));
+            info_pocess.push(state[0]);
+            info_pocess.push(name[1]);
+
+
+            /**
+             * Lectura del porcentaje de memoria utilizada por un proceso en el archivo /statm
+             */
+
+            data = fs.readFileSync(testFolder + files[file] + "/statm");
+            var elems = data.toString().split(' ');
+            var memoria = elems[1];
+            //console.log(file + " Cantidad memoria: " + memoria + "Porcentaje: " + memoria / 10000 + "%");
+
+            /**
+             * Almacenamiento de información en arraylist:
+             * id, user, state, %RAM, name
+             */
+
+            info_pocess.push(memoria / 10000 + "%");
+            info_total.push(info_pocess);
         }
-
-        //console.log("REPORTE");
-        //console.log("Suspendidos: " + suspendido);
-        //console.log("Ociosos: " + ocioso);
-        //console.log("Detenido: " + detenido);
-        //console.log("Corriendo: " + corriendo);
-
-        estados_cant[0] = suspendido;
-        estados_cant[1] = ocioso;
-        estados_cant[2] = detenido;
-        estados_cant[3] = corriendo;
-        estados_cant[4] = zombie;
-
-        info_pocess.push(pid);
-        info_pocess.push("1");
-        info_pocess.push(pstate);
-        info_pocess.push(pname);
-
-
-        /**
-         * Lectura del porcentaje de memoria utilizada por un proceso en el archivo /statm
-         
-
-        data = fs.readFileSync(testFolder + files[file] + "/statm");
-        var elems = data.toString().split(' ');
-        var memoria = elems[1];
-        //console.log(file + " Cantidad memoria: " + memoria + "Porcentaje: " + memoria / 10000 + "%");
-
-        /**
-         * Almacenamiento de información en arraylist:
-         * id, user, state, %RAM, name
-         */
-
-        info_pocess.push(500 / 10000 + "%");
-        console.log(info_pocess);
-        info_total.push(info_pocess);
-
     }
-
-    
 }
+
 
 var uso_cpu;
 var cpuStats = require('cpu-stats');
@@ -161,8 +174,8 @@ setInterval(function () {
         //console.log(result);
         //console.log("%CPU: " + result[0].cpu);
         //console.log("%Idle: " + result[0].idle);
-        uso_cpu = result[0].cpu;
-        updateHistograma(Math.round(uso_cpu));
+        uso_cpu = Math.floor(result[0].cpu);
+        updateHistograma(uso_cpu);
     });
 }, 1000);
 
@@ -224,9 +237,10 @@ setInterval(function () {
     var libre = data.toString().split('\n')[6];
 
     utilizada = total_ram - libre;
-    uso_mem = utilizada*100/total_ram;
+    uso_mem = Math.round(utilizada*100/total_ram,1);
+    console.log(uso_mem)
 
-    updateHistograma2(Math.round(uso_mem));
+    updateHistograma2(Math.floor(uso_mem));
 }, 1000);
 
 
